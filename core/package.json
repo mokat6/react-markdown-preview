@@ -19,6 +19,11 @@
       "import": "./esm/nohighlight.js",
       "types": "./lib/nohighlight.d.ts",
       "require": "./lib/nohighlight.js"
+    },
+    "./nohtml": {
+      "import": "./esm/nohtml.js",
+      "types": "./lib/nohtml.d.ts",
+      "require": "./lib/nohtml.js"
     }
   },
   "scripts": {
@@ -40,6 +45,7 @@
     "dist",
     "lib",
     "esm",
+    "nohtml.d.ts",
     "nohighlight.d.ts",
     "markdown.css",
     "src/**/*.{ts,tsx,less}"

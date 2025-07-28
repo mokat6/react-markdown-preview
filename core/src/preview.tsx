@@ -2,7 +2,6 @@ import React, { useImperativeHandle } from 'react';
 import ReactMarkdown, { type UrlTransform } from 'react-markdown';
 import { type PluggableList } from 'unified';
 import gfm from 'remark-gfm';
-import raw from 'rehype-raw';
 import { remarkAlert } from 'remark-github-blockquote-alert';
 import { useCopied } from './plugins/useCopied';
 import { type MarkdownPreviewProps, type MarkdownPreviewRef } from './Props';
@@ -43,9 +42,6 @@ export default React.forwardRef<MarkdownPreviewRef, MarkdownPreviewProps>((props
       return /^[A-Za-z0-9]+$/.test(element.tagName);
     },
   };
-  if (!skipHtml) {
-    rehypePlugins.push(raw);
-  }
   const remarkPlugins = [remarkAlert, ...(other.remarkPlugins || []), gfm];
   const wrapperProps = { ...warpperElement, ...wrapperElement };
   return (
