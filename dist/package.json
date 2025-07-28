@@ -1,0 +1,78 @@
+{
+  "name": "@uiw/react-markdown-preview",
+  "version": "5.1.5",
+  "description": "React component preview markdown text in web browser. The minimal amount of CSS to replicate the GitHub Markdown style.",
+  "homepage": "https://uiwjs.github.io/react-markdown-preview",
+  "funding": "https://jaywcjlove.github.io/#/sponsor",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "exports": {
+    "./README.md": "./README.md",
+    "./package.json": "./package.json",
+    "./markdown.css": "./markdown.css",
+    ".": {
+      "import": "./esm/index.js",
+      "types": "./lib/index.d.ts",
+      "require": "./lib/index.js"
+    },
+    "./nohighlight": {
+      "import": "./esm/nohighlight.js",
+      "types": "./lib/nohighlight.d.ts",
+      "require": "./lib/nohighlight.js"
+    },
+    "./nohtml": {
+      "import": "./esm/nohtml.js",
+      "types": "./lib/nohtml.d.ts",
+      "require": "./lib/nohtml.js"
+    }
+  },
+  "scripts": {
+    "css:build": "compile-less -d src -o esm",
+    "css:watch": "compile-less -d src -o esm --watch",
+    "css:build:dist": "compile-less -d src --combine markdown.css --rm-global",
+    "bundle": "ncc build src/index.tsx --target web --filename markdown",
+    "bundle:min": "ncc build src/index.tsx --target web --filename markdown --minify",
+    "watch": "tsbb watch src/*.tsx --use-babel & npm run css:watch",
+    "build": "tsbb build src/*.tsx --use-babel && npm run css:build && npm run css:build:dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uiwjs/react-markdown-preview.git"
+  },
+  "author": "kenny wang <wowohoo@qq.com>",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "lib",
+    "esm",
+    "nohtml.d.ts",
+    "nohighlight.d.ts",
+    "markdown.css",
+    "src/**/*.{ts,tsx,less}"
+  ],
+  "keywords": [
+    "react",
+    "markdown",
+    "prismjs",
+    "react-markdown"
+  ],
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.17.2",
+    "@uiw/copy-to-clipboard": "~1.0.12",
+    "react-markdown": "~9.1.0",
+    "rehype-attr": "~4.0.0",
+    "rehype-autolink-headings": "~7.1.0",
+    "rehype-ignore": "^2.0.0",
+    "rehype-prism-plus": "2.0.0",
+    "rehype-raw": "^7.0.0",
+    "rehype-rewrite": "~4.0.0",
+    "rehype-slug": "~6.0.0",
+    "remark-gfm": "~4.0.0",
+    "remark-github-blockquote-alert": "^1.0.0",
+    "unist-util-visit": "^5.0.0"
+  }
+}
